@@ -27,13 +27,11 @@ class AleXmlReader
 
   public function parse_params($params_elem)
   {
-
     foreach ($params_elem as $param) {
       $name = (string)$param['name'];
       $value = (string)$param;
       $params[$name] = $value;
     }
-
     return $params;
   }
 
@@ -53,6 +51,7 @@ class AleXmlReader
 
     $this->set_variants_attrs_names();
 
+    $groups_variants_attrs = [];
     foreach ($this->offers as $offer) {
       $group_id = (string)$offer['group_id'];
       $offer_id = (string)$offer['id'];
@@ -60,7 +59,7 @@ class AleXmlReader
       $name = (string)$offer->name;
 
       $is_parent_product = 0;
-      if (isset($offer->vendor)) {
+      if ($offer_id == $group_id) {
         $is_parent_product = 1;
       }
 
@@ -74,20 +73,24 @@ class AleXmlReader
           $s_attrs[$k] = $v;
         }
       }
-      if ($s_attrs) {
-        $this->products[$group_id][$offer_id]['simple_attributes'] = $s_attrs;
-      }
 
       $this->products[$group_id][$offer_id] = [
         'price' => $price,
-        'name' => $name,
         'offer_id' => $offer_id,
+        'group_id' => $group_id,
         'variants_attributes' => $v_attrs,
-        'is_parent_product' => $is_parent_product
+        'is_parent_product' => $is_parent_product,
+        // 'simple_attributes' => $s_attrs
       ];
+
+      if ($is_parent_product) {
+        $this->products[$group_id][$offer_id]['simple_attributes'] = $s_attrs;
+        $this->products[$group_id][$offer_id]['name'] = $name;
+      }
 
       foreach ($params as $k => $v) {
         if (in_array($k, $this->variants_attr_names)) {
+          $this->products[$group_id][$group_id]['all_variants_attrs'][$k][$v] = $v;
           if (!isset($this->variants_attributes[$k]) || !in_array($v, $this->variants_attributes[$k])) {
             $this->variants_attributes[$k][] = $v;
           }
@@ -98,10 +101,13 @@ class AleXmlReader
         }
       }
     }
-
-    print_r($this->products);
+    return [
+      'products' => $this->products,
+      'variants_attributes' => $this->variants_attributes,
+      'simple_attributes' => $this->simple_attributes,
+    ];
   }
 }
 
-$reader = new AleXmlReader('1.xml');
-echo $reader->parse();
+// $reader = new AleXmlReader('1.xml');
+// echo $reader->parse();

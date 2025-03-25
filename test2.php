@@ -46,6 +46,7 @@ function import_yml_variations($yml_file) {
     ];
       
     foreach($attrs as $attr_name=>$v) {
+        $attr_slag = ale_slug($attr_name)
         $pa_slag = name_to_pa($attr_name);
         if (!taxonomy_exists($pa_slag)) {
             $wpdb->insert(
@@ -125,8 +126,8 @@ function import_yml_variations($yml_file) {
         ];
 
         $product_attrs = array_combine(
-          array_map('name_to_pa', array_keys($prod_attrs)),
-          array_map('ale_slug', array_values($prod_attrs))
+          array_map([$this->u, 'name_to_pa'], array_keys($prod_attrs)),
+          array_map([$this->u, 'ale_slug'], array_values($prod_attrs))
         ); 
 
         $attrs_str = implode("-",$product_attrs);

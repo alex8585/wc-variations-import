@@ -8,14 +8,14 @@
       <currency id="UAH" rate="1" />
     </currencies>
     <categories>
-      <category id="1">Смартфоны</category>
+      <category id="1">Нетбуки</category>
       <category id="2">Ноутбуки</category>
     </categories>
     <offers>
       <!-- Товар 1: Ноутбук -->
       <offer id="67890" group_id="67890" available="true">
         <url>https://rozetka.com.ua/laptop_67890</url>
-        <price>32999</price>
+        <price>32000</price>
         <currencyId>UAH</currencyId>
         <categoryId>2</categoryId>
         <picture>https://i.rozetka.ua/goods/67890/67890_image.jpg</picture>
@@ -48,18 +48,18 @@
 
 
       <!-- Товар 2: Ноутбук -->
-      <offer id="67811" group_id="67891" available="true">
+      <offer id="67893" group_id="67893" available="true">
         <url>https://rozetka.com.ua/laptop_67890</url>
-        <price>32999</price>
+        <price>15000</price>
         <currencyId>UAH</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>1</categoryId>
         <picture>https://i.rozetka.ua/goods/67890/67890_image.jpg</picture>
-        <name>Ноутбук Acer 45 </name>
+        <name>Нетбук Acer 45 </name>
         <vendor>ASUS</vendor>
         <vendorCode>X515EA</vendorCode>
-        <description>15.6" FHD, Core i5, 8 ГБ, 512 ГБ SSD</description>
-        <param name="Тип">Ноутбук</param>
-        <param name="Диагональ экрана">15.6"</param>
+        <description>12.5" FHD, Core i5, 8 ГБ, 512 ГБ SSD</description>
+        <param name="Тип">Нетбук</param>
+        <param name="Диагональ экрана">12.5"</param>
 
         <!-- Вариации цвета -->
         <param name="Цвет">Серый</param>
@@ -68,18 +68,18 @@
         <picture>https://i.rozetka.ua/goods/67890/gray.jpg</picture>
       </offer>
 
-      <offer id="67812" group_id="67891" available="true">
+      <offer id="67894" group_id="67893" available="true">
         <price>32999</price>
-        <param name="Цвет">Синий</param>
+        <param name="Цвет">Серый</param>
         <param name="Размер">2</param>
         <param name="test">b</param>
         <picture>https://i.rozetka.ua/goods/67890/blue.jpg</picture>
       </offer>
 
-      <offer id="67813" group_id="67891" available="true">
+      <offer id="67895" group_id="67893" available="true">
         <price>32999</price>
-        <param name="Цвет">Черный</param>
-        <param name="Размер">3</param>
+        <param name="Цвет">Красный</param>
+        <param name="Размер">2</param>
         <param name="test">c</param>
         <picture>https://i.rozetka.ua/goods/67890/black.jpg</picture>
       </offer>
