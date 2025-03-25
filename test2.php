@@ -148,6 +148,5 @@ function import_yml_variations($yml_file) {
     }
 }
 
-
 import_yml_variations('1.xml');
 
