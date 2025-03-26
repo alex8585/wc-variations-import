@@ -1,14 +1,14 @@
 <?php
 require_once('AleUtils.php');
-class AleProductsImport
+class AleFastImport
 {
-
+  // attribute_%d1%80%d0%b0%d0%b7%d0%bc%d0%b5%d1%80
+  // attribute_%d0%a0%d0%b0%d0%b7%d0%bc%d0%b5%d1%80
   public function __construct()
   {
     $this->u = new AleUtils();
     $this->inserted_parent_products_ids = [];
   }
-
 
   function import_product($product)
   {
@@ -17,11 +17,12 @@ class AleProductsImport
     $is_parent_product = $product['is_parent_product'];
     $v_attrs = $product['variants_attributes'];
 
-    if (empty($group_id)) return;
-
     if ($is_parent_product) {
       $name = $product['name'];
       $all_v_attrs = $product['all_variants_attrs'];
+      $s_attrs = $product['simple_attributes'];
+
+      if (empty($group_id)) return;
 
       // 3. Создаём родительский товар
       $product = new WC_Product_Variable();
@@ -35,49 +36,39 @@ class AleProductsImport
       $parent_id = $product->save();
       $this->inserted_parent_products_ids[$group_id] = $parent_id;
 
-      // Обновляем такс_термы родителя
-      foreach ($all_v_attrs as $attr_name => $vals) {
-        foreach ($vals as $k => $term) {
-          $pa_slag = $this->u->name_to_pa($attr_name);
-          $term_slug = $this->u->ale_slug($term);
-          if (!term_exists($term, $pa_slag)) {
-            wp_insert_term($term, $pa_slag, ['slug' => $term_slug]);
-          }
-          wp_set_object_terms($parent_id, $term, $pa_slag, true);
-        }
-      }
-
-      // Обновляем метаданные атрибута для родительского товара
-      $existing_terms = get_post_meta($parent_id, '_product_attributes', true);
-      if (!$existing_terms) $existing_terms = [];
-
+      $product_attributes = [];
       $i = 0;
       foreach ($all_v_attrs as $attr_name => $terms) {
-        $pa_slag = $this->u->name_to_pa($attr_name);
-        $new_terms = array_map([$this->u, 'ale_slug'], $terms);
-        $terms_str = implode('|', $new_terms);
-        $existing_terms += [
-          $pa_slag => [
-            'name'         => $pa_slag,
-            'value'        => $terms_str,
-            'position'     => $i++,
-            'is_visible'   => 1,
-            'is_variation' => 1,
-            'is_taxonomy'  => 1,
-          ]
+        $terms_str = implode('|', $terms);
+        $product_attributes[$attr_name] =  [
+          'name'         => $attr_name,
+          'value'        => $terms_str,
+          'position'     => $i++,
+          'is_visible'   => 0,
+          'is_variation' => 1,
+          'is_taxonomy'  => 0,
+        ];
+      }
+      foreach ($s_attrs as $attr_name => $term) {
+        $product_attributes[$attr_name] =  [
+          'name'         => $attr_name,
+          'value'        => $term,
+          'position'     => $i++,
+          'is_visible'   => 1,
+          'is_variation' => 0,
+          'is_taxonomy'  => 0,
         ];
       }
 
-      update_post_meta($parent_id, '_product_attributes', $existing_terms);
+      update_post_meta($parent_id, '_product_attributes', $product_attributes);
     } else {
       $parent_id = $this->inserted_parent_products_ids[$group_id];
     }
 
     $variant_attrs = array_combine(
-      array_map([$this->u, 'name_to_pa'], array_keys($v_attrs)),
-      array_map([$this->u, 'ale_slug'], array_values($v_attrs))
+      array_map([$this->u, 'lower_encode'], array_keys($v_attrs)),
+      array_values($v_attrs)
     );
-
 
     $attrs_str = implode("-", $variant_attrs);
     $variation_sku = $group_id . '-' . strtolower($attrs_str);

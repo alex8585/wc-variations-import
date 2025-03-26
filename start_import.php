@@ -1,8 +1,8 @@
 <?php
 require_once('../wp-load.php');
 require_once('AleXmlReader.php');
-require_once('AleAttrsImporter.php');
-require_once('AleProductsImport.php');
+// require_once('AleAttrsImporter.php');
+require_once('AleFastImport.php');
 
 
 $reader = new AleXmlReader('1.xml');
@@ -15,8 +15,8 @@ $reader = new AleXmlReader('1.xml');
 
 $attrs = $s_attrs + $v_attrs;
 
-$attrs_imp = new AleAttrsImpotrer();
-$attrs_imp->import($attrs);
+// $attrs_imp = new AleAttrsImpotrer();
+// $attrs_imp->import($attrs);
 
-$attrs_imp = new AleProductsImport();
+$attrs_imp = new AleFastImport();
 $attrs_imp->import($products);

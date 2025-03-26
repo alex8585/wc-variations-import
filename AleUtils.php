@@ -1,6 +1,13 @@
 <?php
 class AleUtils
 {
+  function lower_encode($str)
+  {
+    $lc = mb_strtolower($str, 'UTF-8');
+    $enc = urlencode($lc);
+    return mb_strtolower($enc, 'UTF-8');
+  }
+
   function ale_slug($string)
   {
     $replace = [
