@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2023-11-15 12:00">
+  <shop>
+    <name>Rozetka</name>
+    <company>Интернет-магазин Rozetka</company>
+    <url>https://rozetka.com.ua</url>
+    <currencies>
+      <currency id="UAH" rate="1" />
+    </currencies>
+    <categories>
+      <!-- Уровень 1 -->
+      <category id="1">Электроника</category>
+      <category id="2">Бытовая техника</category>
+      <category id="3">Одежда</category>
+
+      <!-- Уровень 2 (подкатегории) -->
+      <category id="7" parentId="1">Компьютеры</category>
+      <category id="8" parentId="1">Смартфоны</category>
+      <category id="9" parentId="2">Холодильники</category>
+      <category id="10" parentId="2">Стиральные машины</category>
+
+      <!-- Уровень 3 (подкатегории второго уровня) -->
+      <category id="19" parentId="7">Ноутбуки</category>
+      <category id="20" parentId="7">Нетбуки</category>
+      <category id="21" parentId="8">Android</category>
+      <category id="22" parentId="8">iOS</category>
+    </categories>
+    <offers>
+      <!-- Товар 1: Ноутбук ASUS VivoBook 15 -->
+      <offer id="67890" group_id="67890" available="true">
+        <url>https://rozetka.com.ua/laptop_67890</url>
+        <price>1000</price>
+        <currencyId>UAH</currencyId>
+        <categoryId>19</categoryId>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/f/9/f995c280064e2933d6f0b2c2a93e73c5.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/d/2/d2b54d6819c8ddab369baf6c16091722.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/6/1/61544cbf5f3b1ef3f1828f025a8a98e4.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/5/5/55e064ae9124c2aaba1e2ebda07f0568.webp</picture>
+        <name>Ноутбук ASUS VivoBook 15</name>
+        <vendor>ASUS</vendor>
+        <vendorCode>X515EA</vendorCode>
+        <description><![CDATA[
+          <p>Ноутбук ASUS VivoBook 15 - стильный и производительный. Тонкий корпус, легкий вес, мощный процессор Intel Core i5. Идеален для работы и учебы.</p>
+        ]]></description>
+        <param name="Тип">Ноутбук</param>
+        <param name="Диагональ экрана">15.6"</param>
+
+        <!-- Вариации цвета -->
+        <param name="Цвет">Серый</param>
+        <param name="Размер">3</param>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/5/a/5a7c6a556a0564a1dbfab58b6163cc02.webp</picture>
+      </offer>
+
+      <offer id="67891" group_id="67890" available="true">
+        <price>2000</price>
+        <param name="Цвет">Синий</param>
+        <param name="Размер">1</param>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/b/d/bd41597e400569a2bcb4e30416e772b9.webp</picture>
+      </offer>
+
+      <offer id="67892" group_id="67890" available="true">
+        <price>3000</price>
+        <param name="Цвет">Черный</param>
+        <param name="Размер">2</param>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/f/f/ff6e09280c73f8ab79fa5fc42b45b0f1.webp</picture>
+      </offer>
+
+      <!-- Товар 2: Нетбук Acer 45 -->
+      <offer id="67893" group_id="67893" available="true">
+        <url>https://rozetka.com.ua/laptop_67890</url>
+        <price>15000</price>
+        <currencyId>UAH</currencyId>
+        <categoryId>20</categoryId>
+        <picture>https://i.citrus.world/imgcache/size_800/uploads/shop/1/7/1726233558-opt.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/a/6/a6d216bab6273b80cd7a906cbf734431.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/4/6/46aa124d526d63bac76a7f80ee63942e.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/3/2/32d8ab27e4b3785ab2a1cfcd92f69de5.webp</picture>
+        <name>Нетбук Acer 45</name>
+        <vendor>ASUS</vendor>
+        <vendorCode>X515EA</vendorCode>
+        <description><![CDATA[
+          <p>Компактный нетбук Acer 45 с длительным временем работы от батареи. Удобен в путешествиях благодаря малому весу и размерам.</p>
+        ]]></description>
+        <param name="Тип">Нетбук</param>
+        <param name="Диагональ экрана">12.5"</param>
+
+        <!-- Вариации цвета -->
+        <param name="Цвет">Серый</param>
+        <param name="Размер">1</param>
+        <param name="test">a</param>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/b/7/b7008cfeaafd9acaddaf3ce8cc4c60ae.webp</picture>
+      </offer>
+
+      <offer id="67894" group_id="67893" available="true">
+        <price>16000</price>
+        <param name="Цвет">Серый</param>
+        <param name="Размер">2</param>
+        <param name="test">b</param>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/4/4/4460ef01ab6376c4c5e21224edd99b32.webp</picture>
+      </offer>
+
+      <offer id="67895" group_id="67893" available="true">
+        <price>17000</price>
+        <param name="Цвет">Красный</param>
+        <param name="Размер">2</param>
+        <param name="test">c</param>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/1/5/15160904c360b7397ef8dca764b04a19.webp</picture>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

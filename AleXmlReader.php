@@ -8,7 +8,6 @@ class AleXmlReader
     if (!file_exists($xml_file)) {
       die("Файл не найден");
     }
-
     $xml = simplexml_load_file($xml_file);
     if (!$xml) {
       die("Ошибка загрузки YML");
@@ -75,6 +74,10 @@ class AleXmlReader
       $name = (string)$offer->name;
       $xml_category_id = (string)$offer->categoryId;
 
+      $pictures = (array)$offer->picture;
+      $pictures = array_map('trim', $pictures);
+      $description = trim((string)$offer->description);
+
       $is_parent_product = 0;
       if ($offer_id == $group_id) {
         $is_parent_product = 1;
@@ -93,11 +96,12 @@ class AleXmlReader
 
       $this->products[$group_id][$offer_id] = [
         'price' => $price,
+        'images' => $pictures,
         'offer_id' => $offer_id,
         'group_id' => $group_id,
         'variants_attributes' => $v_attrs,
         'is_parent_product' => $is_parent_product,
-        // 'simple_attributes' => $s_attrs
+        'description' => $description,
       ];
 
       if ($is_parent_product) {
@@ -121,12 +125,9 @@ class AleXmlReader
     }
     return [
       'products' => $this->products,
-      'variants_attributes' => $this->variants_attributes,
-      'simple_attributes' => $this->simple_attributes,
+      // 'variants_attributes' => $this->variants_attributes,
+      // 'simple_attributes' => $this->simple_attributes,
       'categories' => $this->categories,
     ];
   }
 }
-
-// $reader = new AleXmlReader('1.xml');
-// echo $reader->parse();

@@ -1,12 +1,13 @@
 <?php
 require_once('AleUtils.php');
 require_once('AleCatsImport.php');
-
+require_once('AleImagesImport.php');
 class AleFastImport
 {
   public function __construct()
   {
     $this->u = new AleUtils();
+    $this->images_import = new AleImagesImport();
     $this->cats_importer = new AleCatsImport();
     $this->inserted_parent_products_ids = [];
   }
@@ -47,6 +48,7 @@ class AleFastImport
     $group_id = $product['group_id'];
     $name = $product['name'];
     $cat_id = $product['db_category_id'];
+    $description = $product['description'];
 
     $wc_product = new WC_Product_Variable();
     $wc_product->set_name($name);
@@ -54,6 +56,18 @@ class AleFastImport
     $wc_product->set_manage_stock(false);
     $wc_product->set_status('publish');
     $wc_product->set_category_ids(array($cat_id));
+    $wc_product->set_description($description);
+
+    [
+      "first_image_id" => $first_image_id,
+      "gallery_ids" => $gallery_ids,
+    ] = $this->images_import->import($product['images']);
+
+    $wc_product->set_image_id($first_image_id);
+    if (!empty($gallery_ids)) {
+      $wc_product->set_gallery_image_ids($gallery_ids);
+    }
+
     $parent_id = $wc_product->save();
 
     $this->import_parent_product_attributes($product, $parent_id);
