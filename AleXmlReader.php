@@ -21,8 +21,6 @@ class AleXmlReader
     $this->cats = $xml->shop->categories->category;
     $this->products = [];
     $this->categories = [];
-    $this->variants_attributes = [];
-    $this->simple_attributes = [];
     $this->variants_attr_names = [];
   }
 
@@ -113,21 +111,12 @@ class AleXmlReader
       foreach ($params as $k => $v) {
         if (in_array($k, $this->variants_attr_names)) {
           $this->products[$group_id][$group_id]['all_variants_attrs'][$k][$v] = $v;
-          if (!isset($this->variants_attributes[$k]) || !in_array($v, $this->variants_attributes[$k])) {
-            $this->variants_attributes[$k][] = $v;
-          }
-        } else {
-          if (!isset($this->simple_attributes[$k]) || !in_array($v, $this->simple_attributes[$k])) {
-            $this->simple_attributes[$k][] = $v;
-          }
         }
       }
     }
     return [
-      'products' => $this->products,
-      // 'variants_attributes' => $this->variants_attributes,
-      // 'simple_attributes' => $this->simple_attributes,
-      'categories' => $this->categories,
+      $this->categories,
+      $this->products,
     ];
   }
 }

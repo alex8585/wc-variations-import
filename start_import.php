@@ -5,17 +5,7 @@ require_once('AleFastImport.php');
 
 $reader = new AleXmlReader('2.xml');
 
-[
-  'categories' => $categories,
-  'products' => $products,
-] = $reader->parse();
-
-// print_r($categories);
-
-// $cats_import = new AleCatsImport();
-// $imported_cats = $cats_import->import($categories);
-// print_r($imported_cats);
-
+[$categories, $products] = $reader->parse();
 
 $import = new AleFastImport();
 $import->import($products, $categories);
