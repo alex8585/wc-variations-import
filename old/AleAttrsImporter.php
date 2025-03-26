@@ -1,5 +1,4 @@
 <?php
-require_once('AleUtils.php');
 class AleAttrsImpotrer
 {
 

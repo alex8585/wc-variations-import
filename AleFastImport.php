@@ -1,15 +1,20 @@
 <?php
-require_once('AleUtils.php');
 require_once('AleCatsImport.php');
 require_once('AleImagesImport.php');
 class AleFastImport
 {
   public function __construct()
   {
-    $this->u = new AleUtils();
     $this->images_import = new AleImagesImport();
     $this->cats_importer = new AleCatsImport();
     $this->inserted_parent_products_ids = [];
+  }
+
+  function lower_encode($str)
+  {
+    $lc = mb_strtolower($str, 'UTF-8');
+    $enc = urlencode($lc);
+    return mb_strtolower($enc, 'UTF-8');
   }
 
   function import_parent_product_attributes($product, $parent_id)
@@ -81,7 +86,7 @@ class AleFastImport
     $v_attrs = $product['variants_attributes'];
 
     $variant_attrs = array_combine(
-      array_map([$this->u, 'lower_encode'], array_keys($v_attrs)),
+      array_map([$this, 'lower_encode'], array_keys($v_attrs)),
       array_values($v_attrs)
     );
 
