@@ -8,16 +8,30 @@
       <currency id="UAH" rate="1" />
     </currencies>
     <categories>
-      <category id="1">Нетбуки</category>
-      <category id="2">Ноутбуки</category>
+      <!-- Уровень 1 -->
+      <category id="1">Электроника</category>
+      <category id="2">Бытовая техника</category>
+      <category id="3">Одежда</category>
+
+      <!-- Уровень 2 (подкатегории) -->
+      <category id="7" parentId="1">Компьютеры</category>
+      <category id="8" parentId="1">Смартфоны</category>
+      <category id="9" parentId="2">Холодильники</category>
+      <category id="10" parentId="2">Стиральные машины</category>
+
+      <!-- Уровень 3 (подкатегории второго уровня) -->
+      <category id="19" parentId="7">Ноутбуки</category>
+      <category id="20" parentId="7">Нетбуки</category>
+      <category id="21" parentId="8">Android</category>
+      <category id="22" parentId="8">iOS</category>
     </categories>
     <offers>
       <!-- Товар 1: Ноутбук -->
       <offer id="67890" group_id="67890" available="true">
         <url>https://rozetka.com.ua/laptop_67890</url>
-        <price>32000</price>
+        <price>1000</price>
         <currencyId>UAH</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>19</categoryId>
         <picture>https://i.rozetka.ua/goods/67890/67890_image.jpg</picture>
         <name>Ноутбук ASUS VivoBook 15</name>
         <vendor>ASUS</vendor>
@@ -33,14 +47,14 @@
       </offer>
 
       <offer id="67891" group_id="67890" available="true">
-        <price>32999</price>
+        <price>2000</price>
         <param name="Цвет">Синий</param>
         <param name="Размер">1</param>
         <picture>https://i.rozetka.ua/goods/67890/blue.jpg</picture>
       </offer>
 
       <offer id="67892" group_id="67890" available="true">
-        <price>32999</price>
+        <price>3000</price>
         <param name="Цвет">Черный</param>
         <param name="Размер">2</param>
         <picture>https://i.rozetka.ua/goods/67890/black.jpg</picture>
@@ -52,7 +66,7 @@
         <url>https://rozetka.com.ua/laptop_67890</url>
         <price>15000</price>
         <currencyId>UAH</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>20</categoryId>
         <picture>https://i.rozetka.ua/goods/67890/67890_image.jpg</picture>
         <name>Нетбук Acer 45 </name>
         <vendor>ASUS</vendor>
@@ -69,7 +83,7 @@
       </offer>
 
       <offer id="67894" group_id="67893" available="true">
-        <price>32999</price>
+        <price>16000</price>
         <param name="Цвет">Серый</param>
         <param name="Размер">2</param>
         <param name="test">b</param>
@@ -77,7 +91,7 @@
       </offer>
 
       <offer id="67895" group_id="67893" available="true">
-        <price>32999</price>
+        <price>17000</price>
         <param name="Цвет">Красный</param>
         <param name="Размер">2</param>
         <param name="test">c</param>

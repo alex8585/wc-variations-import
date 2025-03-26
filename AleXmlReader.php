@@ -19,7 +19,9 @@ class AleXmlReader
 
     $this->xml = $xml;
     $this->offers = $xml->shop->offers->offer;
+    $this->cats = $xml->shop->categories->category;
     $this->products = [];
+    $this->categories = [];
     $this->variants_attributes = [];
     $this->simple_attributes = [];
     $this->variants_attr_names = [];
@@ -46,17 +48,32 @@ class AleXmlReader
     }
   }
 
+  public function parse_categories()
+  {
+    foreach ($this->cats as $cat) {
+      $id = (string)$cat['id'];
+      $parent_id = (string)$cat['parentId'];
+      $name = (string)$cat;
+      $this->categories[$id] = [
+        'id' => $id,
+        'parent_id' => $parent_id,
+        'name' => $name,
+      ];
+    }
+  }
+
   public function parse()
   {
 
+    $this->parse_categories();
     $this->set_variants_attrs_names();
 
-    $groups_variants_attrs = [];
     foreach ($this->offers as $offer) {
       $group_id = (string)$offer['group_id'];
       $offer_id = (string)$offer['id'];
       $price = (float)$offer->price;
       $name = (string)$offer->name;
+      $xml_category_id = (string)$offer->categoryId;
 
       $is_parent_product = 0;
       if ($offer_id == $group_id) {
@@ -84,6 +101,7 @@ class AleXmlReader
       ];
 
       if ($is_parent_product) {
+        $this->products[$group_id][$offer_id]['xml_category_id'] = $xml_category_id;
         $this->products[$group_id][$offer_id]['simple_attributes'] = $s_attrs;
         $this->products[$group_id][$offer_id]['name'] = $name;
       }
@@ -105,6 +123,7 @@ class AleXmlReader
       'products' => $this->products,
       'variants_attributes' => $this->variants_attributes,
       'simple_attributes' => $this->simple_attributes,
+      'categories' => $this->categories,
     ];
   }
 }

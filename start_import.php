@@ -1,22 +1,21 @@
 <?php
 require_once('../wp-load.php');
 require_once('AleXmlReader.php');
-// require_once('AleAttrsImporter.php');
 require_once('AleFastImport.php');
-
 
 $reader = new AleXmlReader('1.xml');
 
 [
+  'categories' => $categories,
   'products' => $products,
-  'variants_attributes' => $v_attrs,
-  'simple_attributes' => $s_attrs
 ] = $reader->parse();
 
-$attrs = $s_attrs + $v_attrs;
+// print_r($categories);
 
-// $attrs_imp = new AleAttrsImpotrer();
-// $attrs_imp->import($attrs);
+// $cats_import = new AleCatsImport();
+// $imported_cats = $cats_import->import($categories);
+// print_r($imported_cats);
 
-$attrs_imp = new AleFastImport();
-$attrs_imp->import($products);
+
+$import = new AleFastImport();
+$import->import($products, $categories);
