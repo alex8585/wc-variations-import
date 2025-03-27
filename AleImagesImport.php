@@ -12,7 +12,6 @@ class AleImagesImport
 
 
     if (is_wp_error($tmp)) {
-      @unlink($tmp);
       return false;
     }
 
