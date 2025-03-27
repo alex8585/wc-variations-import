@@ -1,11 +1,13 @@
 <?php
 require_once('AleCatsImport.php');
 require_once('AleImagesImport.php');
+require_once('AleUtils.php');
 class AleFastImport
 {
   public function __construct()
   {
     $this->images_import = new AleImagesImport();
+    $this->u = new AleUtils();
     $this->cats_importer = new AleCatsImport();
     $this->inserted_parent_products_ids = [];
   }
@@ -135,10 +137,20 @@ class AleFastImport
     return $products;
   }
 
-  function import($products, $categories)
+  function import($categories, $products)
   {
+    $totalItems = count($products);
+    $processed = 0;
+    $startTime = time();
+
     $products = $this->import_cats($products, $categories);
     foreach ($products as $group_id => $group_products) {
+      //drawbar 
+      $processed++;
+      $this->u->draw_progress_bar($processed, $totalItems, $startTime);
+      ob_flush();
+      flush();
+      //import products
       foreach ($group_products as $offer_id => $product) {
         $this->import_product($product);
       }

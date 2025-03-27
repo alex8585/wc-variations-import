@@ -8,4 +8,4 @@ $reader = new AleXmlReader('2.xml');
 [$categories, $products] = $reader->parse();
 
 $import = new AleFastImport();
-$import->import($products, $categories);
+$import->import($categories, $products);
