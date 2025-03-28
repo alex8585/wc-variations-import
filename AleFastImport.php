@@ -8,6 +8,7 @@ class AleFastImport
   private $execution_times = [];
   private $inserted_parent_products_ids = [];
 
+  private $images_import, $u, $cats_importer;
   public function __construct()
   {
     $this->images_import = new AleImagesImport();
@@ -170,6 +171,7 @@ class AleFastImport
 
   function import($categories, $products)
   {
+    ob_start();
     $start = $this->startTimer();
 
     $totalItems = count($products);
@@ -206,4 +208,3 @@ class AleFastImport
     }
   }
 }
-

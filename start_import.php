@@ -3,7 +3,7 @@ require_once('../wp-load.php');
 require_once('AleXmlReader.php');
 require_once('AleFastImport.php');
 
-$reader = new AleXmlReader('2.xml');
+$reader = new AleXmlReader('rozetka_export.xml');
 
 [$categories, $products] = $reader->parse();
 

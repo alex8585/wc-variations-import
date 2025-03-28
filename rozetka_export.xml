@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2025-03-28 07:08">
+  <shop>
+    <name>Rozetka</name>
+    <company>Интернет-магазин Rozetka</company>
+    <url>https://rozetka.com.ua</url>
+    <currencies>
+      <currency id="UAH" rate="1" />
+    </currencies>
+    <categories>
+      <category id="15">Uncategorized</category>
+      <category id="231">Бытовая техника</category>
+      <category id="243">Наушники</category>
+      <category id="241">Ноутбуки</category>
+      <category id="232">Одежда</category>
+      <category id="242">Смартфоны</category>
+      <category id="244">Телевизоры</category>
+      <category id="245">Фотоаппараты</category>
+      <category id="230">Электроника</category>
+      <category id="233" parentId="230">Компьютеры</category>
+      <category id="234" parentId="230">Смартфоны</category>
+      <category id="236" parentId="231">Стиральные машины</category>
+      <category id="235" parentId="231">Холодильники</category>
+      <category id="238" parentId="233">Нетбуки</category>
+      <category id="237" parentId="233">Ноутбуки</category>
+      <category id="239" parentId="234">Android</category>
+      <category id="240" parentId="234">iOS</category>
+    </categories>
+    <offers>
+      <offer id="1040" group_id="1039" available="true">
+        <price>1000</price>
+        <currencyId>UAH</currencyId>
+        <categoryId>237</categoryId>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/f/9/f995c280064e2933d6f0b2c2a93e73c5.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/d/2/d2b54d6819c8ddab369baf6c16091722.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/6/1/61544cbf5f3b1ef3f1828f025a8a98e4.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/5/5/55e064ae9124c2aaba1e2ebda07f0568.webp</picture>
+        <name>Ноутбук ASUS VivoBook 15</name>
+        <vendorCode>67890</vendorCode>
+        <description><![CDATA[<p>Ноутбук ASUS VivoBook 15 - стильный и производительный. Тонкий корпус, легкий вес, мощный процессор Intel Core i5. Идеален для работы и учебы.</p>]]></description>
+        <param name="Тип">Ноутбук</param>
+        <param name="Диагональ экрана">15.6"</param>
+        <param name="цвет">Серый</param>
+        <param name="размер">3</param>
+      </offer>
+      <offer id="1041" group_id="1039" available="true">
+        <price>2000</price>
+        <param name="цвет">Синий</param>
+        <param name="размер">1</param>
+      </offer>
+      <offer id="1042" group_id="1039" available="true">
+        <price>3000</price>
+        <param name="цвет">Черный</param>
+        <param name="размер">2</param>
+      </offer>
+
+      <offer id="1049" group_id="1048" available="true">
+        <picture>https://i.citrus.world/imgcache/size_800/uploads/shop/1/7/1726233558-opt.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/a/6/a6d216bab6273b80cd7a906cbf734431.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/4/6/46aa124d526d63bac76a7f80ee63942e.webp</picture>
+        <picture>
+          https://i.citrus.world/imgcache/size_800/uploads/shop/3/2/32d8ab27e4b3785ab2a1cfcd92f69de5.webp</picture>
+        <price>15000</price>
+        <currencyId>UAH</currencyId>
+        <categoryId>238</categoryId>
+        <name>Нетбук Acer 45</name>
+        <vendorCode>67893</vendorCode>
+        <description><![CDATA[<p>Компактный нетбук Acer 45 с длительным временем работы от батареи. Удобен в путешествиях благодаря малому весу и размерам.</p>]]></description>
+        <param name="Тип">Нетбук</param>
+        <param name="Диагональ экрана">12.5"</param>
+        <param name="цвет">Серый</param>
+        <param name="размер">1</param>
+        <param name="test">a</param>
+      </offer>
+      <offer id="1050" group_id="1048" available="true">
+        <price>16000</price>
+        <param name="цвет">Серый</param>
+        <param name="размер">2</param>
+        <param name="test">b</param>
+      </offer>
+      <offer id="1051" group_id="1048" available="true">
+        <price>17000</price>
+        <param name="цвет">Красный</param>
+        <param name="размер">2</param>
+        <param name="test">c</param>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>
